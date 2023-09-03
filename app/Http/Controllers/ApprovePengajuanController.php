@@ -8,12 +8,22 @@ use App\Models\Barang;
 
 class ApprovePengajuanController extends Controller
 {
+    public function transaksiSearch(Request $request){
+        $fromDate = $request->input('fromDate');
+        $toDate = $request->input('toDate');
+
+
+        $datapengajuan = Pengajuan::where('created_at', '>=', $fromDate)
+                            ->where('created_at', '<=', $toDate)                          
+                            ->get();
+        return view('admin.Approve_Pengajuan.index',compact('datapengajuan'));
+    }
     public function index()
     {
-        $data = Barang::all();
+        // $data = Barang::all();
         $datapengajuan = Pengajuan::with('user','barang')->get();
 
-        return view('admin.Approve_Pengajuan.index',compact('data','datapengajuan'));
+        return view('admin.Approve_Pengajuan.index',compact('datapengajuan'));
     }
    
     public function edit($id)

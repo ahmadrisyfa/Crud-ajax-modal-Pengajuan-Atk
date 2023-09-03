@@ -41,15 +41,15 @@
 
         <div class="d-flex align-items-center justify-content-between">
             <a href="index.html" class="logo d-flex align-items-center">
-                <img src="{{ asset('template_admin') }}/assets/img/logo.png" alt="">
-                <span class="d-none d-lg-block">PT.XYZ CODING</span>
+                <img src="{{ asset('logo.png') }}"  alt="">
+                <span class="d-none d-lg-block" style="color: red">PT.XYZ CODING</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
 
 
 
-        <nav class="header-nav ms-auto">
+        <nav class="header-nav ms-auto" >
             <ul class="d-flex align-items-center">
 
                 <li class="nav-item d-block d-lg-none">
@@ -122,49 +122,22 @@
                 </a>
             </li><!-- End Dashboard Nav -->
             @if (Auth::user()->admin == 'Admin')
-                <li class="nav-item">
-                    <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse"
-                        href="#">
-                        <i class="bi bi-menu-button-wide"></i><span>Daftar Barang</span><i
-                            class="bi bi-chevron-down ms-auto"></i>
-                    </a>
-                    <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                        <li>
-                            <a href="{{ url('admin/barang') }}">
-                                <i class="bi bi-circle"></i><span>Detail Barang</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+            <a class="nav-link" href="{{ url('admin/barang') }}">
+                <i class="bi bi-menu-button-wide"></i><span>Detail Barang</span>
+            </a>
+                
             @endif
             <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#Pengajuan-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-people-fill"></i><span>Daftar Pengajuan</span><i
-                        class="bi bi-chevron-down ms-auto"></i>
+                <a class="nav-link" href="{{ url('admin/pengajuan') }}">
+                    <i class="bi bi-people-fill"></i>
+                    <span>Detail Pengajuan</span>
                 </a>
-                <ul id="Pengajuan-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="{{ url('admin/pengajuan') }}">
-                            <i class="bi bi-circle"></i><span>Detail Pengajuan</span>
-                        </a>
-                    </li>
-                </ul>
+                
             </li>
             @if (Auth::user()->admin == 'Admin')
-                <li class="nav-item">
-                    <a class="nav-link collapsed" data-bs-target="#ApprovePengajuan-nav" data-bs-toggle="collapse"
-                        href="#">
-                        <i class="bi bi-card-checklist"></i><span>Daftar Approve Pengajuan</span><i
-                            class="bi bi-chevron-down ms-auto"></i>
-                    </a>
-                    <ul id="ApprovePengajuan-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                        <li>
-                            <a href="{{ url('admin/approve_pengajuan') }}">
-                                <i class="bi bi-circle"></i><span>Detail Approve Pengajuan</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+            <a class="nav-link" href="{{ url('admin/approve_pengajuan') }}">
+                <i class="bi bi-card-checklist"></i><span>Detail Approve Pengajuan</span>
+            </a>            
             @endif
 
         </ul>

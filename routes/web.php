@@ -28,9 +28,9 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [registerController::class, 'index'])->middleware('guest');
 Route::post('/register', [registerController::class, 'store']);
 // Route::get('/', function () {
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return redirect('login');
+});
 
 
 Route::group(['middleware' => ['auth']], function () {
@@ -53,5 +53,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/approve_pengajuan',[ApprovePengajuanController::class,'index']);
     Route::get('/admin/approve_pengajuan/edit/{id}',[ApprovePengajuanController::class,'edit'])->name('approve_pengajuan.edit');
     Route::put('/admin/approve_pengajuan/update/{id}',[ApprovePengajuanController::class,'update'])->name('approve_pengajuan.update');
-    
+    Route::post('admin/approve_pengajuan/search',[ApprovePengajuanController::class,'transaksiSearch']);
 });

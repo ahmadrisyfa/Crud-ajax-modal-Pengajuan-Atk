@@ -18,6 +18,25 @@
 
                     <div class="card">
                         <div class="card-body">
+                            <form action="{{url('admin/approve_pengajuan/search')}}" method="post">
+                                @csrf
+                                <div class="form-group row mt-2">
+                                    <div class="col-lg-3">
+                                        <label for="fromDate">Dari Tanggal</label>
+                                        <input id="fromDate" name="fromDate" value="{{ request('fromDate') }}" class="date-picker form-control" type="date" required>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label for="toDate">Sampai Tanggal</label>
+                                        <input id="toDate" name="toDate" value="{{ request('toDate') }}" class="date-picker form-control" type="date" required>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <button class="btn btn-info" style="margin-top: 23px" type="submit">Cari Berdasarkan Tanggal</button>
+                                    </div>
+                                </div>
+                            </form>
+                            
+
+                            
                             @if (session()->has('berhasil'))
                                 <div class="alert alert-success alert-dismissible  mt-2" role="alert">
                                     {{ session('berhasil') }}
@@ -38,6 +57,7 @@
                                         <th scope="col">Nama Barang</th>
                                         <th scope="col">Jumlah Pinjam</th>
                                         <th scope="col">Catatan</th>
+                                        <th scope="col">Jumlah Stok Sekarang</th>
                                         <th scope="col">Tanggal Masuk</th>
                                         <th scope="col">Tanggal Keluar</th>
                                         <th scope="col">Status</th>
@@ -52,6 +72,7 @@
                                             <td>{{ $value->barang->nama_barang }}</td>
                                             <td>{{ $value->jumlah_pinjam }}</td>
                                             <td>{{ $value->catatan }}</td>
+                                            <td>{{  $value->barang->jumlah }}</td>
                                             <td>{{ $value->created_at }}</td>
                                             <td>{{ $value->updated_at }}</td>
                                             <td>
